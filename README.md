@@ -1,39 +1,26 @@
 # NoteShare
-A web platform to help students share their notes.
 
-# Setup
+This is NoteShare, a web service for hosting and sharing notes between students. This is the Senior Project of Max Loumena.
+
+## Get All Dependencies
+
 ```
-cd VenvDjango
-
-Scripts\activate
-
-cd project
-
+pip install -r requirements.txt
 npm install
-
-npm run dev
-
-pip install pipenv django djangorestframework coverage
-
-cd project
-
-python manage.py runserver
 ```
 
-Go to http://127.0.0.1:8000/
+## Run NoteShare FrontEnd Locally
 
-# Testing
-
-Go to project directory
 ```
-coverage run --source='.' manage.py test
-
-coverage report
+yarn start
 ```
 
-# Directory
+Currently running on http://localhost:3000/ (Accessible through browser)
 
-React code is in  $.\noteshare\VenvDjango\project\project\frontend\src\components
+## Run NoteShare Server Locally
 
-Backend code is in $.\noteshare\VenvDjango\project\project\leads
+```
+python .\server\server.py
+```
 
+Currently running on http://localhost:8000/ (Accessible through API calls)

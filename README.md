@@ -9,6 +9,10 @@ pip install -r requirements.txt
 npm install
 ```
 
+Requirements also include a Chrome plugin to let the local server and frontend communicate.
+
+Plugin can be found here: https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en-US
+
 ## Run NoteShare FrontEnd Locally
 
 ```

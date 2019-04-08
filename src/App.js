@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import Home from "./Pages/Home/Home";
+import ExPage from "./Pages/ExPage/ExPage";
+import Register from "./Pages/Register/Register";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -14,7 +15,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <header className="App-header">
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact component={ExPage} />
+            <Route path="/Register" exact component={Register} />
           </header>
         </div>
       </Router>

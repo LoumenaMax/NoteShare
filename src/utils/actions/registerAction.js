@@ -3,24 +3,22 @@ import axios from "axios";
 
 const server_url = "http://localhost:8000";
 
-export function fromServer(json) {
-  return { type: types.FROM_SERVER, server_data: json };
+export function registerResponse(json) {
+  return { type: types.REGISTER_RESPONSE, server_data: json };
 }
 
-export function toServer() {
+export function registerSend(login_data) {
   var headers = {};
 
   return dispatch => {
     axios({
-      url: server_url + "/example",
+      url: server_url + "/register",
       method: "POST",
       headers: headers,
-      data: {
-        ex: "Hello"
-      }
+      data: login_data
     })
       .then(res => {
-        dispatch(fromServer(res));
+        dispatch(registerResponse(res));
       })
       .catch(err => {
         alert("Error has occurred.");

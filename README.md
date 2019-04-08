@@ -28,3 +28,9 @@ python .\server\server.py
 ```
 
 Currently running on http://localhost:8000/ (Accessible through API calls)
+
+Use the Issues tab to log technical debt and progress.
+
+Paper due at end of Spring Quarter on design and features of project.
+
+Usability Testing: Other Students

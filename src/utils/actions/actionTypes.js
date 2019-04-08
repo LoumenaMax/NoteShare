@@ -1,2 +1,6 @@
 export const TO_SERVER = "TO_SERVER";
 export const FROM_SERVER = "FROM_SERVER";
+export const LOGIN_RESPONSE = "LOGIN_RESPONSE";
+export const LOGIN_SEND = "LOGIN_SEND";
+export const REGISTER_SEND = "REGISTER_SEND";
+export const REGISTER_RESPONSE = "REGISTER_RESPONSE";

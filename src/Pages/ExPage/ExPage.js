@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./ExPage.scss";
-import Home from "../Home/Home";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -17,11 +16,7 @@ class ExPage extends Component {
   componentDidMount() {}
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.stateVariable) {
-      alert("AWESOME");
-    } else {
-      alert("NOT AWESOME");
-    }
+    this.props.history.push("/Register");
   }
 
   sendToServer = () => {

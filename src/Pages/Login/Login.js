@@ -1,24 +1,22 @@
 import React, { Component } from "react";
-import "./Register.scss";
+import "./Login.scss";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as registerAction from "../../utils/actions/registerAction";
+import * as loginAction from "../../utils/actions/loginAction";
 import { Switch, Route, withRouter } from "react-router-dom";
 
 //React router imports
 import { Link } from "react-router-dom";
 
-class Register extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
       email: "",
       password: ""
     };
 
-    this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,15 +25,7 @@ class Register extends Component {
   componentDidMount() {}
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.registered) {
-      this.props.history.push("/Login");
-    } else {
-      alert("An error has occurred");
-    }
-  }
-
-  handleNameChange(event) {
-    this.setState({ name: event.target.value });
+    console.log(nextProps);
   }
 
   handleEmailChange(event) {
@@ -47,7 +37,7 @@ class Register extends Component {
   }
 
   handleSubmit(event) {
-    this.props.registerAction.registerSend(this.state);
+    this.props.loginAction.loginSend(this.state);
     event.preventDefault();
   }
 
@@ -56,12 +46,6 @@ class Register extends Component {
       <div className="ex-container">
         <h1>NoteShare</h1>
         <form onSubmit={this.handleSubmit}>
-          <input
-            type="name"
-            value={this.state.name}
-            placeholder="Name"
-            onChange={this.handleNameChange}
-          />
           <input
             type="email"
             value={this.state.email}
@@ -83,15 +67,12 @@ class Register extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
-  return {
-    registered: Object.assign({}, state.registered)
-  };
+  return {};
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    registerAction: bindActionCreators(registerAction, dispatch)
+    loginAction: bindActionCreators(loginAction, dispatch)
   };
 }
 
@@ -99,5 +80,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Register)
+  )(Login)
 );

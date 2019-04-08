@@ -2,5 +2,9 @@ export default {
   credentials: {
     authenticated: false
   },
-  example: null
+  example: null,
+  registered: {
+    registered: false
+  },
+  login: false
 };

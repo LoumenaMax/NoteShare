@@ -68,5 +68,55 @@ def signUp():
         cursor.close()
         conn.close()
 
+@app.route('/login',methods=['POST','GET'])
+def login():
+    try:
+        post_data = request.get_json()
+        _email = post_data.get("email")
+        _password = post_data.get("password")
+
+        # validate the received values
+        if _email and _password:
+
+            # All Good, let's call MySQL
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            sql = "SELECT * FROM users WHERE user_username = %s"
+
+            cursor.execute(sql, _email)
+            user = cursor.fetchone()
+
+            if user is None:
+                return make_response(jsonify(
+                    {
+                        'error': 'No user found'
+                    }))
+            elif check_password_hash(user[3], _password):
+                return make_response(jsonify(
+                    {
+                        'message': 'Success!'
+                    }))
+            else:
+                return make_response(jsonify(
+                    {
+                        'message': 'Incorrect Password'
+                    }))
+        else:
+            return make_response(jsonify(
+                {
+                    'message': 'Enter the required fields'
+                }))
+
+    except Exception as e:
+        return make_response(jsonify(
+            {
+                'error': str(e)
+            }))
+    finally:
+        cursor.close()
+        conn.close()
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=os.environ.get('PORT', 8000), debug=True)

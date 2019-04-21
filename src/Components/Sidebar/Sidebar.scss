@@ -1,0 +1,20 @@
+.sidebar {
+  background-color: #fff;
+  box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  min-width: 120px;
+  margin: 0 10px;
+}
+
+.fauxNavElement {
+  height: 10px;
+  background-color: #eee;
+}
+
+.fauxNav {
+  margin: 20px 0;
+}
+
+.fauxNavElement:not(:last-child) {
+  margin-bottom: 10px;
+}

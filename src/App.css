@@ -1,6 +1,22 @@
 .App {
+  height: 100%;
+  width: 100%;
+}
+
+.body {
+  overflow: auto;
+  background-color: #eee;
+  height: 100%;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
 }
 
 .App-header {
+  height: 100%;
+  width: 100%;
   background-color: #ff0000;
 }

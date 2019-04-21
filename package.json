@@ -25,6 +25,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "react-step-wizard": "^5.0.0",
+    "react-sticky-box": "^0.8.0",
     "react-test-renderer": "^16.8.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",

@@ -4,13 +4,15 @@ import register from "./registerReducer";
 import login from "./loginReducer";
 import userInfo from "./userInfoReducer";
 import currentClass from "./currentClassReducer";
+import searchableSchools from "./searchableSchoolsReducer";
 
 const rootReducer = combineReducers({
   example,
   register,
   login,
   userInfo,
-  currentClass
+  currentClass,
+  searchableSchools
 });
 
 export default rootReducer;

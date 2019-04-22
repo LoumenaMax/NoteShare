@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 class Search extends Component {
   render() {
-    return <div className="ex-container" />;
+    return <div />;
   }
 }
 

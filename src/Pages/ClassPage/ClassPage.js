@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Switch, Route, withRouter } from "react-router-dom";
 import Tabs from "./../../Components/TabList/TabList";
+import Notes from "./../../Components/Notes/Notes";
 import "./ClassPage.scss";
 //React router imports
 import { Link } from "react-router-dom";
@@ -15,6 +16,7 @@ class ClassPage extends Component {
         <Tabs>
           <div label="Notes">
             See ya later, <em>Alligator</em>!
+            <Notes />
           </div>
           <div label="Discussion">
             After &apos;while, <em>Crocodile</em>!

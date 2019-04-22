@@ -6,6 +6,8 @@ import Sidebar from "./Components/Sidebar/Sidebar";
 import ExPage from "./Pages/ExPage/ExPage";
 import Register from "./Pages/Register/Register";
 import Login from "./Pages/Login/Login";
+import Search from "./Pages/Search/Search";
+import ClassPage from "./Pages/ClassPage/ClassPage";
 import axios from "axios";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -27,6 +29,8 @@ class App extends Component {
               <Route path="/" exact component={ExPage} />
               <Route path="/Register" exact component={Register} />
               <Route path="/Login" exact component={Login} />
+              <Route path="/Search" exact component={Search} />
+              <Route path="/ClassPage" exact component={ClassPage} />
             </header>
           </div>
         </div>

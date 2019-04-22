@@ -1,3 +1,19 @@
-.ex-container {
-    background-color: #FFFFFF;
+.loginContainer {
+    padding: 10px;
+    background: #FFF;
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+    width: 60%;
+}
+
+.item {
+    width: 100%;
+    padding: 12px 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }

@@ -43,16 +43,18 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="ex-container">
-        <h1>NoteShare</h1>
+      <div className="loginContainer">
         <form onSubmit={this.handleSubmit}>
+          <h1 className="item">NoteShare</h1>
           <input
+            className="item"
             type="email"
             value={this.state.email}
             placeholder="Email address"
             onChange={this.handleEmailChange}
           />
           <input
+            className="item"
             type="password"
             value={this.state.password}
             placeholder="Password"

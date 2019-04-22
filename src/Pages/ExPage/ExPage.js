@@ -16,7 +16,7 @@ class ExPage extends Component {
   componentDidMount() {}
 
   componentWillReceiveProps(nextProps) {
-    this.props.history.push("/Register");
+    this.props.history.push("/Login");
   }
 
   sendToServer = () => {

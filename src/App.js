@@ -7,6 +7,7 @@ import ExPage from "./Pages/ExPage/ExPage";
 import Register from "./Pages/Register/Register";
 import Login from "./Pages/Login/Login";
 import axios from "axios";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
         <div className="body">
           <div className="row">
             <StickyBox offsetTop={20} offsetBottom={20}>
-              <Sidebar />
+              <Sidebar userClasses={this.props.userInfo.classes} />
             </StickyBox>
             <header className="App-header">
               <Route path="/" exact component={ExPage} />
@@ -34,4 +35,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    userInfo: state.userInfo
+  };
+}
+
+export default connect(mapStateToProps)(App);

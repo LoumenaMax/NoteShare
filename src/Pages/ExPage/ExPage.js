@@ -16,6 +16,7 @@ class ExPage extends Component {
   componentDidMount() {}
 
   componentWillReceiveProps(nextProps) {
+    console.log();
     this.props.history.push("/Search");
   }
 
@@ -26,8 +27,29 @@ class ExPage extends Component {
   render() {
     return (
       <div className="ex-container">
-        <button className="ex-button" onClick={() => this.sendToServer()}>
-          <div className="ex-button-test">Test</div>
+        <button
+          className="ex-button"
+          onClick={() => this.props.history.push("/Search")}
+        >
+          <div className="ex-button-test">Search</div>
+        </button>
+        <button
+          className="ex-button"
+          onClick={() => this.props.history.push("/Login")}
+        >
+          <div className="ex-button-test">Login</div>
+        </button>
+        <button
+          className="ex-button"
+          onClick={() => this.props.history.push("/ClassPage")}
+        >
+          <div className="ex-button-test">ClassPage</div>
+        </button>
+        <button
+          className="ex-button"
+          onClick={() => this.props.history.push("/Register")}
+        >
+          <div className="ex-button-test">Register</div>
         </button>
       </div>
     );

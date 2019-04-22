@@ -60,8 +60,12 @@ class Login extends Component {
             placeholder="Password"
             onChange={this.handlePasswordChange}
           />
-
-          <input type="submit" value="Submit" />
+          <div className="foot-wrapper">
+            <input classname="submit-link" type="submit" value="Submit" />
+            <a className="register-link" href="http://localhost:3000/Register">
+              Not a user? Register here
+            </a>
+          </div>
         </form>
       </div>
     );

@@ -21,16 +21,16 @@ export default class Accordion extends Component {
   render() {
     return (
       <div>
-        <button className="accordion mcontainer" onClick={this.onClickMenu}>
-          {this.props.name}
-        </button>
-        <div>
-          {!this.state.open && <span>&#9664;</span>}
-          {this.state.open && <span>&#9660;</span>}
+        <div className="header" onClick={this.onClickMenu}>
+          <button className="accordion mcontainer">{this.props.name}</button>
+          <div className="drop-down">
+            {!this.state.open && <span>&#9664;</span>}
+            {this.state.open && <span>&#9660;</span>}
+          </div>
         </div>
         {this.state.open &&
           this.state.children.map(child => {
-            return <div className="mcontainer">{child}</div>;
+            return <div className="child mcontainer">{child}</div>;
           })}
       </div>
     );

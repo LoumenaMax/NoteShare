@@ -1,27 +1,44 @@
+.header {
+    display:flex;
+    transition: 0.4s;
+}
+
 .accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: 0.4s;
+    padding: 18px 0px 18px 18px !important;
+}
+
+.drop-down {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 75%;
+    margin-right: 10%;
+    transition: 0.4s;
 }
 
 .mcontainer {
     background-color: #eee;
     color: #444;
     cursor: pointer;
-    padding: 18px;
-    width: 100%;
+    padding: 18px ;
+    width: 80%;
     text-align: left;
     border: none;
     outline: none;
     transition: 0.4s;
 }
 
+.header:hover{
+    background-color: #ccc;
+}
+
+.header:hover .accordion{
+    background-color: #ccc;
+}
+
+.header:hover .drop-down{
+    background-color: #ccc;
+}
+
 .active, .mcontainer:hover {
-  background-color: #ccc;
+    background-color: #ccc;
 }

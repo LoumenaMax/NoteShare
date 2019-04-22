@@ -6,5 +6,9 @@ export default {
   userInfo: {
     classes: ["boring", "other"]
   },
+  currentClass: {
+    notes: [],
+    discussion: []
+  },
   login: false
 };

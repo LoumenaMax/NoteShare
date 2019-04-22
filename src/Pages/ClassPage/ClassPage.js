@@ -1,16 +1,27 @@
 import React, { Component } from "react";
-import "./ClassPage.scss";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Switch, Route, withRouter } from "react-router-dom";
-
+import Tabs from "./../../Components/TabList/TabList";
+import "./ClassPage.scss";
 //React router imports
 import { Link } from "react-router-dom";
 
 class ClassPage extends Component {
   render() {
-    return <div className="ex-container" />;
+    return (
+      <div className="wrapper">
+        <Tabs>
+          <div label="Notes">
+            See ya later, <em>Alligator</em>!
+          </div>
+          <div label="Discussion">
+            After &apos;while, <em>Crocodile</em>!
+          </div>
+        </Tabs>
+      </div>
+    );
   }
 }
 

@@ -189,12 +189,10 @@ def createUserInfo():
 def createSchool():
     instantiatedNames = getRequestVariables(request, ["school_name"], False)
     if instantiatedNames[0]:
-        return make_response(jsonify(
-            {
-                'error': str(instantiatedNames[1])
-            }))
-    user_info = instantiatedNames[1]
-    data = getData('sp_createSchool', False, user_info)
+        return make_response(jsonify({'error': str(instantiatedNames[1])}))
+
+    school_info = instantiatedNames[1]
+    data = getData('sp_createSchool', False, school_info)
     if data[0]:
         return make_response(jsonify({'error': str(data[1])}))
     data = data[1]
@@ -203,6 +201,75 @@ def createSchool():
         return make_response(jsonify(
             {
                 'message': 'School created successfully'
+            }))
+    else:
+        return make_response(jsonify(
+            {
+                'error': data[0][0]
+            }))
+
+@app.route('/createClass',methods=['POST'])
+def createClass():
+    instantiatedNames = getRequestVariables(request, ["school_id", "class_name"], False)
+    if instantiatedNames[0]:
+        return make_response(jsonify({'error': str(instantiatedNames[1])}))
+    class_info = instantiatedNames[1]
+
+    data = getData('sp_createClass', False, class_info)
+    if data[0]:
+        return make_response(jsonify({'error': str(data[1])}))
+    data = data[1]
+
+    if len(data) is 0:
+        return make_response(jsonify(
+            {
+                'message': 'Class created successfully'
+            }))
+    else:
+        return make_response(jsonify(
+            {
+                'error': data[0][0]
+            }))
+
+@app.route('/createPost',methods=['POST'])
+def createPost():
+    instantiatedNames = getRequestVariables(request, ["date_sold", "author_id", "class_id", "name"], False)
+    if instantiatedNames[0]:
+        return make_response(jsonify({'error': str(instantiatedNames[1])}))
+    post_info = instantiatedNames[1]
+
+    data = getData('sp_createPost', False, post_info)
+    if data[0]:
+        return make_response(jsonify({'error': str(data[1])}))
+    data = data[1]
+
+    if len(data) is 0:
+        return make_response(jsonify(
+            {
+                'message': 'Post created successfully'
+            }))
+    else:
+        return make_response(jsonify(
+            {
+                'error': data[0][0]
+            }))
+
+@app.route('/savePost',methods=['POST'])
+def savePost():
+    instantiatedNames = getRequestVariables(request, ["user_id", "post_id"], False)
+    if instantiatedNames[0]:
+        return make_response(jsonify({'error': str(instantiatedNames[1])}))
+    save_info = instantiatedNames[1]
+
+    data = getData('sp_savePost', False, save_info)
+    if data[0]:
+        return make_response(jsonify({'error': str(data[1])}))
+    data = data[1]
+
+    if len(data) is 0:
+        return make_response(jsonify(
+            {
+                'message': 'Post saved successfully'
             }))
     else:
         return make_response(jsonify(

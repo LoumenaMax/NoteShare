@@ -144,7 +144,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_createPost`(
 )
 BEGIN
     if ( select exists (select 1 from classes where class_id = p_class_id) ) THEN
-		if ( select exists (select 1 from users where user_id = author_id) ) THEN
+		if ( select exists (select 1 from users where user_id = p_author_id) ) THEN
 			insert into posts
 			(
 				date_sold,
@@ -159,7 +159,7 @@ BEGIN
 				p_class_id,
 				p_name
 			);
-    		ELSE
+    	ELSE
 			SELECT 'Author does not exist';
         END IF;
 	ELSE

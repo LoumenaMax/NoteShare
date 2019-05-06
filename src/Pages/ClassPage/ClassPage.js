@@ -15,11 +15,12 @@ class ClassPage extends Component {
       <div className="wrapper">
         <Tabs>
           <div label="Notes">
-            See ya later, <em>Alligator</em>!
             <Notes />
           </div>
           <div label="Discussion">
-            After &apos;while, <em>Crocodile</em>!
+            <div className="discussion-wrapper">
+              After &apos;while, <em>Crocodile</em>!
+            </div>
           </div>
         </Tabs>
       </div>

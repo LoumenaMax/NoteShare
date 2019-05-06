@@ -14,7 +14,11 @@ export default class Notes extends Component {
     return (
       <div className="wrapper">
         {this.state.children.map(child => {
-          return <NotesItem key={child} />;
+          return (
+            <div className="child-wrapper">
+              <NotesItem key={child} />
+            </div>
+          );
         })}
       </div>
     );

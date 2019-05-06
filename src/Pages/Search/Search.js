@@ -24,7 +24,7 @@ const getIndexedOptions = createSelector(
 
 class Search extends Component {
   render() {
-    return <Select {...this.props} />;
+    return <Select className="searchbar" {...this.props} />;
   }
 }
 

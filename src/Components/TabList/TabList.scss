@@ -3,8 +3,9 @@
     border-bottom: 1px solid #ccc;
 }
 
+//TODO: Fix this, it only works for certain machines
 .tab-margin {
-    margin-right: 50px;
+    margin-right: 7%;
 }
 
 .tab-list-item {
@@ -21,5 +22,6 @@
 }
 
 .tabs {
+    width: inherit;
     margin: 0px;
 }

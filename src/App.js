@@ -22,7 +22,7 @@ class App extends Component {
       <Router>
         <div className="body">
           <div className="row">
-            <StickyBox offsetTop={20} offsetBottom={20}>
+            <StickyBox>
               <Sidebar userClasses={this.props.userInfo.classes} />
             </StickyBox>
             <header className="App-header">

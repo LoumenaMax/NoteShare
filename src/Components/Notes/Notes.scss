@@ -3,9 +3,10 @@
     flex-wrap: wrap;
     height: 100%;
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-right: 20px;
+}
+
+.child-wrapper {
+    padding: 10px;
 }
 
 ::-webkit-scrollbar {

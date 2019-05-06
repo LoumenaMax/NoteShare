@@ -17,6 +17,7 @@
     "axios": "^0.18.0",
     "flask": "^0.2.10",
     "node-sass": "^4.11.0",
+    "pytest": "^1.0.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-dropzone": "^8.0.3",

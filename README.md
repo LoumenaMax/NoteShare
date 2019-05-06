@@ -27,7 +27,7 @@ First, you need to have MySQL installed on your machine. Once you have it instal
 
 ```
 mysql -u LoumenaMax -p;
-ITAOTSm3535
+password
 ```
 
 Wait until you are logged in and then type the following command.
@@ -36,7 +36,7 @@ Wait until you are logged in and then type the following command.
 create database NoteShare;
 ```
 
-You now have the database on your computer, and now it's time to populate it. Open up the MySQL workbench that should have installed with your community version of MySQL. From the toolbar, select 'Database' and then 'Connect to Database.' In the popup, navigate to the parameters tab and change the username to 'LoumenaMax' and then click 'OK.' Enter your password when prompted, and you should be taken to an empty Query. Copy the dump.sql file in it's entirety and paste it into this query tab. Then click the lightning bolt in the toolbar to run the dump file. Do this same procedure with the 'procedures_accessing.sql' and 'procedures_creating.sql' files.
+You now have the database on your computer, and now it's time to populate it. Open up the MySQL workbench that should have installed with your community version of MySQL. From the toolbar, select 'Database' and then 'Connect to Database.' In the popup, navigate to the parameters tab and change the username to 'LoumenaMax' and then click 'OK.' Enter the password 'password' when prompted, and you should be taken to an empty Query. Copy the dump.sql file in it's entirety and paste it into this query tab. Then click the lightning bolt in the toolbar to run the dump file. Do this same procedure with the 'procedures_accessing.sql' and 'procedures_creating.sql' files.
 
 Congratulations! You now have the database completely set up.
 

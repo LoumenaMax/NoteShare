@@ -4,15 +4,28 @@ import os
 from flask import Flask, render_template, request, make_response, jsonify
 from flaskext.mysql import MySQL
 from werkzeug import generate_password_hash, check_password_hash
+import io
+import boto3
 
 mysql = MySQL()
 app = Flask(__name__)
 
-app.config['MYSQL_DATABASE_USER'] = 'LoumenaMax'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'password'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
 app.config['MYSQL_DATABASE_DB'] = 'NoteShare'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
+
+AWS_ACCESS_KEY_ID = 'AKIAJ7LK5WID72NPVX7Q'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_BUCKET_NAME = '32v8n6509fy07cy092bcy0y0983jfud32'
+
+session = boto3.Session(
+    aws_access_key_id=AWS_ACCESS_KEY_ID,
+    aws_secret_access_key=AWS_SECRET_ACCESS_KEY
+)
+s3 = session.resource('s3')
+bucket = s3.Bucket(AWS_BUCKET_NAME)
 
 # Takes in the request and a list of variable names you want from the request and
 # outputs a tuple that either contains the varibles from the request or an error
@@ -59,6 +72,35 @@ def getData( procName, oneFlag, instantiatedNames ):
         cursor.close() if cursor else None;
         conn.close() if conn else None;
     return (errorFlag, data)
+
+
+@app.route('/upload', methods=['POST'])
+def uploadFile():
+    stream = request.files['file']
+    name = request.form['name']
+    bucket.upload_fileobj(stream, Key=name)
+
+    return make_response(jsonify(
+        {
+            'message': 'Successfully uploaded file ' + name
+        }))
+
+@app.route('/getFile', methods=['POST'])
+def grabFile():
+    instantiatedNames = getRequestVariables(request, ["name"], False)
+    if instantiatedNames[0]:
+        return make_response(jsonify({'error': str(instantiatedNames[1])}))
+
+    filename = instantiatedNames[1][0]
+
+    file = io.BytesIO()
+    bucket.download_fileobj(filename, file)
+    file.flush()
+
+    response = make_response()
+    response.headers['my-custom-header'] = 'my-custom-status-0'
+    response.data = file.getvalue()
+    return response
 
 @app.route('/example', methods = ['POST'])
 def test():
@@ -131,12 +173,15 @@ def searchClasses():
         return make_response(jsonify({'error': str(data[1])}))
     data = data[1]
 
+    if len(data) == 0:
+        return make_response(jsonify({'classes': []}))
     if data[0] == "School does not exist":
         return make_response(jsonify(
             {
                 'error': data[0]
             }))
     else:
+        data = list(map(lambda x: {'value': x[0], 'label': x[1]}, data))
         return make_response(jsonify(
             {
                 'classes': data
@@ -150,6 +195,7 @@ def searchSchools():
     data = data[1]
 
     if len(data) is not 0:
+        data = list(map(lambda x: {'value': x[0], 'label': x[1]}, data))
         return make_response(jsonify(
             {
                 'schools': data

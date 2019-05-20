@@ -138,6 +138,7 @@ DROP PROCEDURE IF EXISTS sp_createPost;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_createPost`(
 	IN p_date_sold DATETIME,
+    IN p_file_name VARCHAR(100),
     IN p_author_id INT(11),
     IN p_class_id INT(11),
     IN p_name VARCHAR(100)
@@ -148,6 +149,7 @@ BEGIN
 			insert into posts
 			(
 				date_sold,
+                file_name,
 				author_id,
 				class_id,
 				name
@@ -155,6 +157,7 @@ BEGIN
 			values
 			(
 				p_date_sold,
+                p_file_name,
 				p_author_id,
 				p_class_id,
 				p_name

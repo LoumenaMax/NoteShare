@@ -12,12 +12,12 @@ import { Link } from "react-router-dom";
 class ExPage extends Component {
   constructor(props) {
     super(props);
+    this.sendToServer();
   }
   componentDidMount() {}
 
   componentWillReceiveProps(nextProps) {
-    console.log();
-    this.props.history.push("/Search");
+    console.log(nextProps);
   }
 
   sendToServer = () => {

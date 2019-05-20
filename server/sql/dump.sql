@@ -93,7 +93,8 @@ UNLOCK TABLES;
 
 CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL AUTO_INCREMENT,
-  `date_sold` timestamp NOT NULL,
+  `date_posted` timestamp NOT NULL,
+  `file_name` varchar(100) DEFAULT NULL,
   `author_id` int(11) DEFAULT NULL,
   `class_id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
@@ -108,7 +109,7 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `posts` WRITE;
-INSERT INTO `posts` VALUES (1, '2019-03-16 05:19:21', 1, 1, "Lesson 1");
+INSERT INTO `posts` VALUES (1, '2019-03-16 05:19:21', 'response.pdf', 1, 1, "Lesson 1");
 UNLOCK TABLES;
 
 --

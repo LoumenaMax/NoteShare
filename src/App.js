@@ -6,7 +6,8 @@ import Sidebar from "./Components/Sidebar/Sidebar";
 import ExPage from "./Pages/ExPage/ExPage";
 import Register from "./Pages/Register/Register";
 import Login from "./Pages/Login/Login";
-import Search from "./Pages/Search/Search";
+import SearchSchool from "./Pages/SearchSchool/SearchSchool";
+import SearchClass from "./Pages/SearchClass/SearchClass";
 import ClassPage from "./Pages/ClassPage/ClassPage";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -29,8 +30,13 @@ class App extends Component {
               <Route path="/" exact component={ExPage} />
               <Route path="/Register" exact component={Register} />
               <Route path="/Login" exact component={Login} />
-              <Route path="/Search" exact component={Search} />
-              <Route path="/ClassPage" exact component={ClassPage} />
+              <Route path="/SearchSchool" exact component={SearchSchool} />
+              <Route
+                path="/SearchClass/:handle"
+                exact
+                component={SearchClass}
+              />
+              <Route path="/ClassPage/:handle" exact component={ClassPage} />
             </header>
           </div>
         </div>

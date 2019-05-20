@@ -97,6 +97,21 @@ END$$
 DELIMITER ;
 
 --
+-- Procedure structure for getting a single school
+--
+DROP PROCEDURE IF EXISTS sp_getSchool;
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getSchool`(
+    IN p_school_id INT(11)
+)
+BEGIN
+    select school_name
+    from schools
+    where school_id=p_school_id;
+END$$
+DELIMITER ;
+
+--
 -- Procedure structure for getting all schools
 --
 DROP PROCEDURE IF EXISTS sp_getSchools;

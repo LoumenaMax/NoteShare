@@ -98,7 +98,8 @@ def grabFile():
     file.flush()
 
     response = make_response()
-    response.headers['my-custom-header'] = 'my-custom-status-0'
+    response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % filename
+    response.headers['Content-Type'] = 'application/pdf'
     response.data = file.getvalue()
     return response
 

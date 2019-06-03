@@ -13,15 +13,8 @@ export default function credentials(state = initialState.currentClass, action) {
     case RETRIEVE_POSTS_RESPONSE:
       console.log("Mail from the Server");
       console.log(action.server_data.data.posts);
-      var newPosts = [];
-      for (var post in action.server_data.data.posts) {
-        var file = action.server_data.data.posts[post];
-        newPosts.push(file);
-        console.log(post);
-      }
-      console.log(state);
       return Object.assign({}, state, {
-        notes: newPosts
+        notes: action.server_data.data.posts
       });
 
     default:

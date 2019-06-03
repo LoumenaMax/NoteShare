@@ -14,11 +14,11 @@ export default class NotesItem extends Component {
     this.state = {
       numPages: null,
       pageNumber: 1,
-      file: this.props.file,
-      date: "March 12, 2019",
+      file: this.props.file[1],
+      date: this.props.file[0],
       positionNumber: 1,
-      name: "Default Name",
-      author: "Mr. Awesome"
+      name: this.props.file[3],
+      author: this.props.file[2]
     };
   }
 
@@ -29,15 +29,14 @@ export default class NotesItem extends Component {
   render() {
     return (
       <div>
-        <Document
-          file={"http://localhost:8000/getFile?name=response.pdf"}
-          onLoadSuccess={this.onDocumentLoadSuccess}
-        >
-          <Page pageNumber={this.state.pageNumber} />
-        </Document>
-        <p>
-          Page {this.state.pageNumber} of {this.state.numPages}
-        </p>
+        <div className="prev-image">
+          <Document
+            file={"http://localhost:8000/getFile?name=" + this.state.file}
+            onLoadSuccess={this.onDocumentLoadSuccess}
+          >
+            <Page height={286} pageNumber={this.state.pageNumber} />
+          </Document>
+        </div>
         <p>{this.state.name}</p>
         <p>{"Author: " + this.state.author}</p>
         <p>{"Last Updated: " + this.state.date}</p>

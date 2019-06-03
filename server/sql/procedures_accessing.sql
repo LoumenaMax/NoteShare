@@ -68,7 +68,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getClassPosts`(
 )
 BEGIN
     if ( select exists (select 1 from classes where class_id = p_class_id) ) THEN
-		select *
+		select date_posted,file_name,(select user_display_name from userinfo where user_id=author_id),name
         from posts
         where class_id=p_class_id;
     ELSE

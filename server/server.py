@@ -182,14 +182,8 @@ def retrievePosts():
                 'error': data[0]
             }))
     else:
-        fields = {}
-        for post in data:
-            file = BytesIO()
-            bucket.download_fileobj(post[2], file)
-            file.flush()
-            fields[post[2]] = base64.b64encode(file.getvalue()).decode()
         return make_response(jsonify({
-            'posts': fields
+            'posts': data
         }))
 
 #------------------------------------------------------------------------------

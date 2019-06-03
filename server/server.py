@@ -4,8 +4,10 @@ import os
 from flask import Flask, render_template, request, make_response, jsonify
 from flaskext.mysql import MySQL
 from werkzeug import generate_password_hash, check_password_hash
-import io
+from io import BytesIO
+import base64
 import boto3
+from requests_toolbelt import MultipartEncoder
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -85,15 +87,13 @@ def uploadFile():
             'message': 'Successfully uploaded file ' + name
         }))
 
-@app.route('/getFile', methods=['POST'])
+@app.route('/getFile', methods=['GET'])
 def grabFile():
-    instantiatedNames = getRequestVariables(request, ["name"], False)
-    if instantiatedNames[0]:
-        return make_response(jsonify({'error': str(instantiatedNames[1])}))
+    filename = request.args.get('name')
+    if not filename:
+        return make_response(jsonify({'error': 'No name set'}))
 
-    filename = instantiatedNames[1][0]
-
-    file = io.BytesIO()
+    file = BytesIO()
     bucket.download_fileobj(filename, file)
     file.flush()
 
@@ -158,6 +158,42 @@ def login():
         return make_response(jsonify({'user': data[1]}))
     else:
         return make_response(jsonify({'error': 'Incorrect Password'}))
+
+@app.route('/retrievePosts',methods=['POST'])
+def retrievePosts():
+    instantiatedNames = getRequestVariables(request, ["class_id"], False)
+    if instantiatedNames[0]:
+        return make_response(jsonify(
+            {
+                'error': str(instantiatedNames[1])
+            }))
+    _school_id = instantiatedNames[1]
+    data = getData('sp_getClassPosts', False, _school_id)
+    if data[0]:
+        return make_response(jsonify({'error': str(data[1])}))
+    data = data[1]
+
+    if len(data) == 0:
+        return make_response(jsonify({'posts': []}))
+    if data[0] == "School does not exist":
+        return make_response(jsonify(
+            {
+                'error': data[0]
+            }))
+    else:
+        fields = {}
+        for post in data:
+            file = BytesIO()
+            bucket.download_fileobj(post[2], file)
+            file.flush()
+            fields[post[2]] = base64.b64encode(file.getvalue()).decode()
+        return make_response(jsonify({
+            'posts': fields
+        }))
+
+#------------------------------------------------------------------------------
+# USED FOR SEARCHING
+#------------------------------------------------------------------------------
 
 @app.route('/searchClasses',methods=['POST'])
 def searchClasses():

@@ -6,6 +6,7 @@ import userInfo from "./userInfoReducer";
 import currentClass from "./currentClassReducer";
 import searchableSchools from "./searchableSchoolsReducer";
 import searchableClasses from "./searchableClassesReducer";
+import retrievePosts from "./retrievePostsReducer";
 
 const rootReducer = combineReducers({
   example,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   userInfo,
   currentClass,
   searchableSchools,
-  searchableClasses
+  searchableClasses,
+  retrievePosts
 });
 
 export default rootReducer;

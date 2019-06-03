@@ -6,10 +6,8 @@ export default {
   userInfo: {
     classes: ["boring", "other"]
   },
-  currentSchool: {
-    name: "Default School"
-  },
   currentClass: {
+    id: null,
     notes: [],
     discussion: []
   },

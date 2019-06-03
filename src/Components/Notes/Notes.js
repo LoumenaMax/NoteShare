@@ -3,20 +3,13 @@ import "./Notes.scss";
 import NotesItem from "./../NotesItem/NotesItem";
 
 export default class Notes extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      children: [1, 2, 3, 4, 5, 6, 7]
-    };
-  }
-
   render() {
     return (
       <div className="wrapper">
-        {this.state.children.map(child => {
+        {this.props.children.map(child => {
           return (
             <div className="child-wrapper">
-              <NotesItem key={child} />
+              <NotesItem file={child} />
             </div>
           );
         })}

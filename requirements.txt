@@ -2,3 +2,4 @@ flask
 boto3
 flask-mysql
 werkzeug
+requests-toolbelt

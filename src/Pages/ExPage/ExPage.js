@@ -29,7 +29,7 @@ class ExPage extends Component {
       <div className="ex-container">
         <button
           className="ex-button"
-          onClick={() => this.props.history.push("/Search")}
+          onClick={() => this.props.history.push("/SearchSchool")}
         >
           <div className="ex-button-test">Search</div>
         </button>

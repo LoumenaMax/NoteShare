@@ -18,9 +18,9 @@ app.config['MYSQL_DATABASE_DB'] = 'NoteShare'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
 
-AWS_ACCESS_KEY_ID = 'AKIAJ7LK5WID72NPVX7Q'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_BUCKET_NAME = '32v8n6509fy07cy092bcy0y0983jfud32'
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
+AWS_BUCKET_NAME = ''
 
 session = boto3.Session(
     aws_access_key_id=AWS_ACCESS_KEY_ID,
